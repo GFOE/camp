@@ -72,9 +72,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(project, &AutonomousVehicleProject::backgroundUpdated, m_ais_manager, &AISManager::updateBackground);
     connect(m_ui->projectView, &ProjectView::viewportChanged, m_ais_manager, &AISManager::updateViewport);
 
-    //m_radar_manager = new RadarManager();
-    //m_radar_manager->setTFBuffer(m_ui->rosLink->tfBuffer());
-    //connect(project, &AutonomousVehicleProject::backgroundUpdated, m_radar_manager, &RadarManager::updateBackground);
+    m_radar_manager = new RadarManager();
+    m_radar_manager->setTFBuffer(m_ui->rosLink->tfBuffer());
+    connect(project, &AutonomousVehicleProject::backgroundUpdated, m_radar_manager, &RadarManager::updateBackground);
 
     m_grid_manager = new GridManager();
     m_grid_manager->setTFBuffer(m_ui->rosLink->tfBuffer());
